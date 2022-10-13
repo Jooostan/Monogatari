@@ -4,20 +4,34 @@ description = `
 `;
 
 characters = [
+// l: black, r: red, g: green, b: blue, y: yellow, 
+// p: purple, c: cyan, L: light_black, R: light_red, 
+// G: light_green, B: light_blue, Y: light_yellow, P: light_purple, 
+// C: light_cyan
 `
- rrrrr
-rr   r
-rr   r
-rrrrrr
- r   r
+  LLL 
+  Lyy
+  ryy
+  rrg
+  rgg
+  b b
 `,
 `
- rrrrr
-rr   r
-rr   r
-rrrrrr
- r   r 
- r   r
+      
+  C C 
+ CyyCC
+  yyy
+  RRR
+ pppRp
+`
+,
+`
+ rrr  
+rYYYr 
+rBYBr 
+rBBB  
+rG G  
+ G y
 `
 ];
 
