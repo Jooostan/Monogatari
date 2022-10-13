@@ -1,6 +1,7 @@
 title = "Hyakumonogatari Kaidankai";
 
 description = `
+[Tap] to end story
 `;
 
 characters = [
@@ -84,7 +85,12 @@ let story2;
 let peep3;
 let peep1and2;
 let story3;
+let snuff;
+let ending1;
+let ending2;
 let count; // used to display and shift the current text
+let waitin;
+let walkin;
 
 let sec;   // timer for first story
 let sec2;  // timer for person 1 & 3 dialogue
@@ -108,6 +114,7 @@ function update() {
 		sec5 = 0;
 		sec6 = 0;
 		time = 0;
+		waitin = 0;
 
 		pause = false;
 
@@ -122,11 +129,11 @@ function update() {
 		narration = [];
 
 		// 0
-		narration[0] = "There\’s a game your supposed";
+		narration[0] = "There`s a game your supposed";
 		narration[1] = "to play in the dead of night.";
 		narration[2] = "You light one hundred candles";
 		narration[3] = "and leave them in a room. You";
-		narration[4] = "tell a horror narration and go";
+		narration[4] = "tell a horror story and go";
 		narration[5] = "to snuff a candle.";
 		narration[6] = ""
 
@@ -188,7 +195,7 @@ function update() {
 		dialogue[27] = "";
 
 		// Green
-		dialogue[28] = "Calm down guys. We\’re almost";
+		dialogue[28] = "Calm down guys. We`re almost";
 		dialogue[29] = "at the end of the game. Now go";
 		dialogue[30] = "on and tell your story.";
 		dialogue[31] = "";
@@ -220,21 +227,21 @@ function update() {
 		story[17] = "had to come from somewhere.";
 		story[18] = "Somewhere with many ingredients."
 		story[19] = "It was the day before All";
-		story[20] = "Hallow\’s Eve.";
+		story[20] = "Hallow`s Eve.";
 
 		story[21] = "A new batch was bought to be";
 		story[22] = "sold to the kids.Money from";
 		story[23] = "small hands in exchange for the";
-		story[24] = "man\’s confections.Halloween,";
+		story[24] = "man`s confections.Halloween,";
 		story[25] = "afterall, is the perfect time";
 		story[26] = "for humbugs.Then the sickness";
 		story[27] = "came.";
 
 		story[28] = "First one, then ten, then 100,";
 		story[29] = "until more 200 fell ill.";
-		story[30] = "Everyone loved Billy\’s sweets.";
-		story[31] = "Everyone ate Billy\’s sweets";
-		story[32] = "But Billy didn\’t make his";
+		story[30] = "Everyone loved Billy`s sweets.";
+		story[31] = "Everyone ate Billy`s sweets";
+		story[32] = "But Billy didn`t make his";
 		story[33] = "sweets.";
 		story[34] = "";
 
@@ -443,6 +450,91 @@ function update() {
 		story3[47] = "";
 		story3[48] = "";
 
+		// -SNUFF----------------------------------------------
+		snuff[0] = "They`re still not back...";
+		snuff[1] = "";
+		snuff[2] = "";
+		snuff[3] = "";
+		snuff[4] = "";
+		snuff[5] = "";
+		snuff[6] = ""
+
+		snuff[7] = "They`re just being an idiot.";
+		snuff[8] = "Just go on and snuff your";
+		snuff[9] = "candle.";
+		snuff[10] = "";
+		snuff[11] = "";
+		snuff[12] = "";
+		snuff[13] = "";
+
+		// -ENDING-1-------------------------------------------
+		ending1 = [];
+		ending1[0] = "Couldn't handle any more";
+		ending1[1] = "stories?";
+		ending1[2] = "";
+		ending1[3] = "";
+		ending1[4] = "";
+		ending1[5] = "";
+		ending1[6] = ""
+
+		ending1[7] = "There’s still 2 candles left...";
+		ending1[8] = "";
+		ending1[9] = "";
+		ending1[10] = "";
+		ending1[11] = "";
+		ending1[12] = "";
+		ending1[13] = "";
+
+		ending1[14] = "But it`s alright.You can leave";
+		ending1[15] = "knowing.";
+		ending1[16] = "";
+		ending1[17] = "";
+		ending1[18] = "";
+		ending1[19] = "";
+		ending1[20] = "";
+
+		ending1[21] = "You never finished the game.";
+		ending1[22] = "";
+		ending1[23] = "";
+		ending1[24] = "";
+		ending1[25] = "";
+		ending1[26] = "";
+		ending1[27] = "";
+
+		// -ENDING-2-------------------------------------------
+		ending2 = [];
+		ending2[0] = "2 candles left, and 1";
+		ending2[1] = "player down.";
+		ending2[2] = "";
+		ending2[3] = "";
+		ending2[4] = "";
+		ending2[5] = "";
+		ending2[6] = ""
+
+		ending2[7] = "Was it a trick or have";
+		ending2[8] = "they.";
+		ending2[9] = "";
+		ending2[10] = "";
+		ending2[11] = "";
+		ending2[12] = "";
+		ending2[13] = "";
+
+		ending2[14] = "Become an unknown";
+		ending2[15] = "entity`s treat?";
+		ending2[16] = "";
+		ending2[17] = "";
+		ending2[18] = "";
+		ending2[19] = "";
+		ending2[20] = "";
+
+		ending2[21] = "Suppose you’ll never";
+		ending2[22] = "find out...";
+		ending2[23] = "";
+		ending2[24] = "";
+		ending2[25] = "";
+		ending2[26] = "";
+		ending2[27] = "";
+
 	}
 	// -END-OF-INIT-----------------------------------
 
@@ -462,7 +554,7 @@ function update() {
 		
 		// -NARRATION------------------------------------------
 		case "narration":
-			text("narration", G.WIDTH/2, 190);
+			// text("narration", G.WIDTH/2, 190);
 			color("black");
 			// Timer - 60 ticks --> 1 second
 			if(sec%60 == 0){
@@ -474,7 +566,7 @@ function update() {
 				sec = 0;
 			} else{ // Otherwise display the current text
 				if(count < 15){
-					text(time.toString(), 4, 4);
+					// text(time.toString(), 4, 4);
 					text(narration[count], 12, G.WIDTH/3 + 5);
 					text(narration[count + 1], 12, G.WIDTH/3 + 13);
 					text(narration[count + 2], 12, G.WIDTH/3 + 21);
@@ -490,13 +582,8 @@ function update() {
 				}
 			}
 
-			// Debugging Pausing
 			if(input.isJustPressed){
-				if(pause == false){
-					pause = true;
-				} else{
-					pause = false;
-				}
+				state = ending1;
 			}
 
 			// Pausing Stuff
@@ -511,7 +598,7 @@ function update() {
 		// -DIALOGUE-------------------------------------------
 		case "dialogue":
 			let dia = 0;
-			text("dialogue", G.WIDTH/2, 190);
+			// text("dialogue", G.WIDTH/2, 190);
 			peeps.forEach((p) => {
 				color(peepColors[dia]);
 				char("a", p.pos);
@@ -536,7 +623,7 @@ function update() {
 					} else{
 						color("cyan");
 					}
-					text(time.toString(), 4, 4);
+					// text(time.toString(), 4, 4);
 					text(dialogue[count], 12, G.WIDTH/3 + 5);
 					text(dialogue[count + 1], 12, G.WIDTH/3 + 13);
 					text(dialogue[count + 2], 12, G.WIDTH/3 + 21);
@@ -554,11 +641,7 @@ function update() {
 
 			// Debugging Pausing
 			if(input.isJustPressed){
-				if(pause == false){
-					pause = true;
-				} else{
-					pause = false;
-				}
+				state = ending1;
 			}
 
 			// Pausing Stuff
@@ -573,7 +656,7 @@ function update() {
 		// -STORY----------------------------------------------
 		case "story":
 			let x = 0;
-			text("story", G.WIDTH/2, 190);
+			// text("story", G.WIDTH/2, 190);
 			peeps.forEach((p) => {
 				color(peepColors[x]);
 				char("a", p.pos);
@@ -590,7 +673,7 @@ function update() {
 				sec = 0;
 			} else{ // Otherwise display the current text
 				if(count < 43){
-					text(time.toString(), 4, 4);
+					// text(time.toString(), 4, 4);
 					text(story[count], 12, G.WIDTH/3 + 5);
 					text(story[count + 1], 12, G.WIDTH/3 + 13);
 					text(story[count + 2], 12, G.WIDTH/3 + 21);
@@ -600,18 +683,14 @@ function update() {
 					text(story[count + 6], 12, G.WIDTH/3 + 53);
 				} else {
 					console.log("count: " + count)
-					count = 0; // CHANGE LATER
+					count = 0;
+					walkin = 0;
 					state = "peep2WalkOut";
 				}
 			}
 
 			// Debugging Pausing
 			if(input.isJustPressed){
-				// if(pause == false){
-				// 	pause = true;
-				// } else{
-				// 	pause = false;
-				// }
 				state = "ending1";
 			}
 
@@ -627,8 +706,9 @@ function update() {
 
 		// -PEEP2WALKOUT---------------------------------------
 		case "peep2WalkOut":
-			text("peep2Walkout", G.WIDTH/2, 190);
+			// text("peep2Walkout", G.WIDTH/2, 190);
 			let j = 0;
+			walkin++;
 			peeps.forEach((p) => {
 				if(j === 1) {
 					p.pos.x += 0.5;
@@ -639,15 +719,17 @@ function update() {
 
 				if(j === 1 && p.pos.x > G.WIDTH + 6) {
 					state = "peep1and3Dialogue";
+					
 				}
-				j++;
+			j++;
+			
 			});
 
 			break;
 	
 		// -PEEP1AND3DIALOGUE---------------------------------
 		case "peep1and3Dialogue":
-			text("peep1and3Dialogue", G.WIDTH/2, 190);
+			// text("peep1and3Dialogue", G.WIDTH/2, 190);
 			let k = 0;
 			peeps.forEach((p) => {
 				if(k !== 1) {
@@ -690,11 +772,7 @@ function update() {
 
 			// Debugging Pausing
 			if(input.isJustPressed){
-				if(pause == false){
-					pause = true;
-				} else{
-					pause = false;
-				}
+				state = ending1;
 			}
 
 			// Pausing Stuff
@@ -707,7 +785,7 @@ function update() {
 		
 		// -PEEP2WALKIN----------------------------------------
 		case "peep2WalkIn":
-			text("peep2WalkIn", G.WIDTH/2, 190);
+			// text("peep2WalkIn", G.WIDTH/2, 190);
 			let l = 0;
 			peeps.forEach((p) => {
 				if(l === 1) {
@@ -726,7 +804,7 @@ function update() {
 		
 		// -PEEP2AND3DIALOGUE---------------------------------
 		case "peep2and3Dialogue":
-			text("peep2and3Dialogue", G.WIDTH/2, 190);
+			// text("peep2and3Dialogue", G.WIDTH/2, 190);
 			let m = 0;
 			peeps.forEach((p) => {
 				color(peepColors[m]);
@@ -751,7 +829,7 @@ function update() {
 					} else{
 						color("cyan");
 					}
-					text(time.toString(), 4, 4);
+					// text(time.toString(), 4, 4);
 					text(peep2and3[count], 12, G.WIDTH/3 + 5);
 					text(peep2and3[count + 1], 12, G.WIDTH/3 + 13);
 					text(peep2and3[count + 2], 12, G.WIDTH/3 + 21);
@@ -768,11 +846,6 @@ function update() {
 
 			// Debugging Pausing
 			if(input.isJustPressed){
-				if(pause == false){
-					pause = true;
-				} else{
-					pause = false;
-				}
 			}
 
 			// Pausing Stuff
@@ -786,7 +859,7 @@ function update() {
 		// -STORY2---------------------------------------------
 		case "story2":
 			let n = 0;
-			text("story2", G.WIDTH/2, 190);
+			// text("story2", G.WIDTH/2, 190);
 			peeps.forEach((p) => {
 				color(peepColors[n]);
 				char("a", p.pos);
@@ -803,7 +876,7 @@ function update() {
 				sec = 0;
 			} else{ // Otherwise display the current text
 				if(count < 36){
-					text(time.toString(), 4, 4);
+					// text(time.toString(), 4, 4);
 					text(story2[count], 12, G.WIDTH/3 + 5);
 					text(story2[count + 1], 12, G.WIDTH/3 + 13);
 					text(story2[count + 2], 12, G.WIDTH/3 + 21);
@@ -820,11 +893,7 @@ function update() {
 
 			// Debugging Pausing
 			if(input.isJustPressed){
-				if(pause == false){
-					pause = true;
-				} else{
-					pause = false;
-				}
+				state = ending1;
 			}
 
 			// Pausing Stuff
@@ -838,7 +907,7 @@ function update() {
 		
 		// -PEEP3DIALOGUE--------------------------------------
 		case "peep3Dialogue":
-			text("peep3Dialogue", G.WIDTH/2, 190);
+			// text("peep3Dialogue", G.WIDTH/2, 190);
 			let o = 0;
 			peeps.forEach((p) => {
 					color(peepColors[o]);
@@ -856,7 +925,7 @@ function update() {
 				sec = 0;
 			} else{ // Otherwise display the current text
 				if(count < 7){
-					text(time.toString(), 4, 4);
+					// text(time.toString(), 4, 4);
 					text(peep3[count], 12, G.WIDTH/3 + 5);
 					text(peep3[count + 1], 12, G.WIDTH/3 + 13);
 					text(peep3[count + 2], 12, G.WIDTH/3 + 21);
@@ -873,11 +942,7 @@ function update() {
 
 			// Debugging Pausing
 			if(input.isJustPressed){
-				if(pause == false){
-					pause = true;
-				} else{
-					pause = false;
-				}
+				state = ending1;
 			}
 
 			// Pausing Stuff
@@ -890,7 +955,7 @@ function update() {
 		
 		// -PEEP3WALKOUT---------------------------------------
 		case "peep3WalkOut":
-			text("peep3Walkout", G.WIDTH/2, 190);
+			// text("peep3Walkout", G.WIDTH/2, 190);
 			let q = 0;
 			peeps.forEach((p) => {
 				if(q === 2) {
@@ -901,16 +966,18 @@ function update() {
 				char("a", p.pos);
 
 				if(q === 2 && p.pos.x > G.WIDTH + 6) {
-					state = "peep1and2Dialogue";
+					waitin++;
 				}
 				q++;
 			});
-
+			if(waitin == 600){
+				state = "peep1and2Dialogue"
+			}
 			break;
 
 		// -PEEP1AND2DIALOGUE---------------------------------
 		case "peep1and2Dialogue":
-			text("peep1and2Dialogue", G.WIDTH/2, 190);
+			// text("peep1and2Dialogue", G.WIDTH/2, 190);
 			let r = 0;
 			peeps.forEach((p) => {
 				if(r !== 2) {
@@ -946,16 +1013,12 @@ function update() {
 					count = 0; // CHANGE LATER
 					color("black");
 					state = "story3";
-				} // last workin here
+				}
 			}
 
 			// Debugging Pausing
 			if(input.isJustPressed){
-				if(pause == false){
-					pause = true;
-				} else{
-					pause = false;
-				}
+				state = ending2;
 			}
 
 			// Pausing Stuff
@@ -969,7 +1032,7 @@ function update() {
 		// -STORY3---------------------------------------------
 		case "story3":
 			let s = 0;
-			text("story3", G.WIDTH/2, 190);
+			// text("story3", G.WIDTH/2, 190);
 			peeps.forEach((p) => {
 				color(peepColors[s]);
 				char("a", p.pos);
@@ -986,7 +1049,7 @@ function update() {
 				sec = 0;
 			} else{ // Otherwise display the current text
 				if(count < 43){
-					text(time.toString(), 4, 4);
+					// text(time.toString(), 4, 4);
 					text(story3[count], 12, G.WIDTH/3 + 5);
 					text(story3[count + 1], 12, G.WIDTH/3 + 13);
 					text(story3[count + 2], 12, G.WIDTH/3 + 21);
@@ -1002,11 +1065,7 @@ function update() {
 
 			// Debugging Pausing
 			if(input.isJustPressed){
-				if(pause == false){
-					pause = true;
-				} else{
-					pause = false;
-				}
+				state = ending2;
 			}
 
 			// Pausing Stuff
@@ -1020,7 +1079,7 @@ function update() {
 		
 		// -SNUFFCANDLE----------------------------------------
 		case "snuffCandle":
-			text("SnuffCandle", G.WIDTH/2, 190);
+			// text("SnuffCandle", G.WIDTH/2, 190);
 			let t = 0;
 			peeps.forEach((p) => {
 				if(t !== 2) {
@@ -1029,18 +1088,45 @@ function update() {
 				}
 				t++;
 			});
+			// Timer - 60 ticks --> 1 second
+			if(sec%60 == 0){
+				time++;
+			}
+			if(sec == 180){ // If change is x (60 * 10 seconds) amount of seconds, then switch text
+				count += 7;
+				sec = 0;
+			} else{ // Otherwise display the current text
+				if(count < 22){
+					// text(time.toString(), 4, 4);
+					text(snuff[count], 12, G.WIDTH/3 + 5);
+					text(snuff[count + 1], 12, G.WIDTH/3 + 13);
+					text(snuff[count + 2], 12, G.WIDTH/3 + 21);
+					text(snuff[count + 3], 12, G.WIDTH/3 + 29);
+					text(snuff[count + 4], 12, G.WIDTH/3 + 37);
+					text(snuff[count + 5], 12, G.WIDTH/3 + 45);
+					text(snuff[count + 6], 12, G.WIDTH/3 + 53);
+				} else {
+					color("black");
+					state = "peep1WalkOut";
+				}
+			}
 
-			sec6++;
+			// Debugging Pausing
+			if(input.isJustPressed){
+				state = ending2;
+			}
 
-			console.log(sec6);
-			if(sec6 === 100) {
-				state = "peep1WalkOut";
+			// Pausing Stuff
+			if(pause == false){
+				sec++;
+			} else{
+				text("paused", G.WIDTH/2, 10);
 			}
 			break;
 		
 		// -PEEP1WALKOUT---------------------------------------	
 		case "peep1WalkOut":
-			text("peep1Walkout", G.WIDTH/2, 190);
+			// text("peep1Walkout", G.WIDTH/2, 190);
 			let u = 0;
 			peeps.forEach((p) => {
 				if(u === 0) {
@@ -1051,16 +1137,91 @@ function update() {
 				char("a", p.pos);
 
 				if(u === 0 && p.pos.x > G.WIDTH + 6) {
-					state = "bleh";
+					state = "ending3";
 				}
 				u++;
 			});
 
 			break;
 
+		// ----------------------------------------------------	
 		case "ending1":
 			text("this is ending 1", G.WIDTH/2, 190);
+			color("black");
+			// Timer - 60 ticks --> 1 second
+			if(sec%60 == 0){
+				time++;
+			}
+			// CHANGE BACK LATER
+			if(sec == 180){ // If change is x (60 * 10 seconds) amount of seconds, then switch text
+				count += 7;
+				sec = 0;
+			} else{ // Otherwise display the current text
+				if(count < 22){
+					// text(time.toString(), 4, 4);
+					text(ending1[count], 12, G.WIDTH/3 + 5);
+					text(ending1[count + 1], 12, G.WIDTH/3 + 13);
+					text(ending1[count + 2], 12, G.WIDTH/3 + 21);
+					text(ending1[count + 3], 12, G.WIDTH/3 + 29);
+					text(ending1[count + 4], 12, G.WIDTH/3 + 37);
+					text(ending1[count + 5], 12, G.WIDTH/3 + 45);
+					text(ending1[count + 6], 12, G.WIDTH/3 + 53);
+				} else {
+					color("black");
+					end();
+				}
+			}
+
+			// Debugging Pausing
+			if(input.isJustPressed){
+			}
+
+			// Pausing Stuff
+			if(pause == false){
+				sec++;
+			} else{
+				text("paused", G.WIDTH/2, 10);
+			}
 			break;
+		
+		case "ending2":
+			text("this is ending 2", G.WIDTH/2, 190);
+			color("black");
+			// Timer - 60 ticks --> 1 second
+			if(sec%60 == 0){
+				time++;
+			}
+			if(sec == 180){ // If change is x (60 * 10 seconds) amount of seconds, then switch text
+				count += 7;
+				sec = 0;
+			} else{ // Otherwise display the current text
+				if(count < 22){
+					// text(time.toString(), 4, 4);
+					text(ending1[count], 12, G.WIDTH/3 + 5);
+					text(ending1[count + 1], 12, G.WIDTH/3 + 13);
+					text(ending1[count + 2], 12, G.WIDTH/3 + 21);
+					text(ending1[count + 3], 12, G.WIDTH/3 + 29);
+					text(ending1[count + 4], 12, G.WIDTH/3 + 37);
+					text(ending1[count + 5], 12, G.WIDTH/3 + 45);
+					text(ending1[count + 6], 12, G.WIDTH/3 + 53);
+				} else {
+					color("black");
+					end();
+				}
+			}
+
+			// Pausing Stuff
+			if(pause == false){
+				sec++;
+			} else{
+				text("paused", G.WIDTH/2, 10);
+			}
+			break;
+
+		case "ending3":
+			text("this is ending 3", G.WIDTH/2, 190);
+			break;
+		
 		default: 
 		text("End of game states :)", 12, G.WIDTH/3 + 5);
 	}
