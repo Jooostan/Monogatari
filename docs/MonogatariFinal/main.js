@@ -15,7 +15,7 @@ rYYYr
 rBYBr 
 rBBB  
 rG G  
- G y  
+ c c  
 `
 ,
 `
@@ -33,6 +33,14 @@ rG G
   yyy
   RRR
  pppRp
+`
+,
+`
+      
+      
+  LL  
+  LL  
+  LL  
 `
 
 ];
@@ -60,7 +68,7 @@ const G = {
 /**
  * @type { Sprite[] }
  */
-let candles;
+let candles = [];
 
 /**
  * @type { Sprite[] }
@@ -91,6 +99,7 @@ let story3;
 let snuff;
 let ending1;
 let ending2;
+let ending3;
 let count; // used to display and shift the current text
 let waitin;
 let walkin;
@@ -121,12 +130,16 @@ function update() {
 
 		pause = false;
 
-		state = "story"; // HCNAGE LATER
+		state = "ending3"; // HCNAGE LATER
 
 		// Add character positions into peeps array
 		peeps[0] = {pos: vec(G.WIDTH/2 - 8, G.HEIGHT/2 + 50)};
 		peeps[1] = {pos: vec(G.WIDTH/2, G.HEIGHT/2 + 50)};
 		peeps[2] = {pos: vec(G.WIDTH/2 + 8, G.HEIGHT/2 + 50)};
+		
+		candles[0] = {pos: vec(G.WIDTH/2 - 8, G.HEIGHT/2 + 50)};
+		candles[1] = {pos: vec(G.WIDTH/2, G.HEIGHT/2 + 50)};
+		candles[2] = {pos: vec(G.WIDTH/2 + 8, G.HEIGHT/2 + 50)};
 
 		// -NARRATION------------------------------------------
 		narration = [];
@@ -490,7 +503,18 @@ function update() {
 		ending2[3] = "they become an unknown";
 		ending2[4] = "entity's treat?";
 		ending2[5] = "Suppose you'll never";
-		ending2[6] = "find out..."
+		ending2[6] = "find out...";
+
+
+		// -ENDING-3-------------------------------------------
+		ending3 = [];
+		ending3[0] = "THANKS FOR THE FEAST!!!";
+		ending3[1] = "";
+		ending3[2] = "";
+		ending3[3] = "";
+		ending3[4] = "";
+		ending3[5] = "";
+		ending3[6] = "";
 
 	}
 	// -END-OF-INIT-----------------------------------
@@ -500,7 +524,7 @@ function update() {
 		case "start":
 			let index = 0;
 			peeps.forEach((p) => {
-				// color(peepColors[index]);
+				color("black");
 				char(peepSprite[index], p.pos);
 				index++;
 			});
@@ -557,7 +581,7 @@ function update() {
 			let dia = 0;
 			// text("dialogue", G.WIDTH/2, 190);
 			peeps.forEach((p) => {
-				// color(peepColors[dia]);
+				color("black");
 				char(peepSprite[dia], p.pos);
 				dia++;
 			});	
@@ -615,7 +639,7 @@ function update() {
 			let x = 0;
 			// text("story", G.WIDTH/2, 190);
 			peeps.forEach((p) => {
-				// color(peepColors[x]);
+				color("black");
 				char(peepSprite[x], p.pos);
 				x++;
 			});	
@@ -671,7 +695,7 @@ function update() {
 					p.pos.x += 0.5;
 				}
 
-				// color(peepColors[j]);
+				color("black");
 				char(peepSprite[j], p.pos);
 
 				if(j === 1 && p.pos.x > G.WIDTH + 6) {
@@ -690,7 +714,7 @@ function update() {
 			let k = 0;
 			peeps.forEach((p) => {
 				if(k !== 1) {
-					// color(peepColors[k]);
+					color("black");
 					char(peepSprite[k], p.pos);
 				}
 				k++;
@@ -749,7 +773,7 @@ function update() {
 					p.pos.x -= 0.5;
 				}
 
-				// color(peepColors[l]);
+				color("black");
 				char(peepSprite[l], p.pos);
 
 				if(l === 1 && p.pos.x == (G.WIDTH/2)) {
@@ -764,7 +788,7 @@ function update() {
 			// text("peep2and3Dialogue", G.WIDTH/2, 190);
 			let m = 0;
 			peeps.forEach((p) => {
-				// color(peepColors[m]);
+				color("black");
 				char(peepSprite[m], p.pos);
 				m++;
 			});
@@ -818,7 +842,7 @@ function update() {
 			let n = 0;
 			// text("story2", G.WIDTH/2, 190);
 			peeps.forEach((p) => {
-				// color(peepColors[n]);
+				color("black");
 				char(peepSprite[n], p.pos);
 				n++;
 			});	
@@ -867,7 +891,7 @@ function update() {
 			// text("peep3Dialogue", G.WIDTH/2, 190);
 			let o = 0;
 			peeps.forEach((p) => {
-					// color(peepColors[o]);
+					color("black");
 					char(peepSprite[o], p.pos);
 				o++;
 			});
@@ -919,7 +943,7 @@ function update() {
 					p.pos.x += 0.5;
 				}
 
-				// color(peepColors[q]);
+				color("black");
 				char(peepSprite[q], p.pos);
 
 				if(q === 2 && p.pos.x > G.WIDTH + 6) {
@@ -938,7 +962,7 @@ function update() {
 			let r = 0;
 			peeps.forEach((p) => {
 				if(r !== 2) {
-					// color(peepColors[r]);
+					color("black");
 					char(peepSprite[r], p.pos);
 				}
 				r++;
@@ -991,7 +1015,7 @@ function update() {
 			let s = 0;
 			// text("story3", G.WIDTH/2, 190);
 			peeps.forEach((p) => {
-				// color(peepColors[s]);
+				color("black");
 				char(peepSprite[s], p.pos);
 				s++;
 			});	
@@ -1040,7 +1064,7 @@ function update() {
 			let t = 0;
 			peeps.forEach((p) => {
 				if(t !== 2) {
-					// color(peepColors[t]);
+					color("black");
 					char(peepSprite[t], p.pos);
 				}
 				t++;
@@ -1090,7 +1114,7 @@ function update() {
 					p.pos.x += 0.5;
 				}
 
-				// color(peepColors[u]);
+				color("black");
 				char(peepSprite[u], p.pos);
 
 				if(u === 0 && p.pos.x > G.WIDTH + 6) {
@@ -1104,7 +1128,19 @@ function update() {
 		// ----------------------------------------------------	
 		case "ending1":
 			// text("this is ending 1", G.WIDTH/2, 190);
-			color("black");
+			
+
+			let v = 0;
+			// place candles 
+			candles.forEach((p) => {
+				color("black");
+				char("d", p.pos);
+				v++;
+			});
+			color("yellow");
+			particle(G.WIDTH/2 - 8, G.HEIGHT/2 + 49, 3, 0.2, -10); // chara 1 candle
+			particle(G.WIDTH/2 + 8, G.HEIGHT/2 + 49, 3, 0.2, -10); // chara 3 candle
+
 			// Timer - 60 ticks --> 1 second
 			if(sec%60 == 0){
 				time++;
@@ -1115,6 +1151,7 @@ function update() {
 				sec = 0;
 			} else{ // Otherwise display the current text
 				if(count < 7){
+					color("black");
 					// text(time.toString(), 4, 4);
 					text(ending1[count], 12, G.WIDTH/3 + 5);
 					text(ending1[count + 1], 12, G.WIDTH/3 + 13);
@@ -1133,16 +1170,23 @@ function update() {
 			if(input.isJustPressed){
 			}
 
-			// Pausing Stuff
-			if(pause == false){
-				sec++;
-			} else{
-				text("paused", G.WIDTH/2, 10);
-			}
 			break;
 		
 		case "ending2":
 			// text("this is ending 2", G.WIDTH/2, 190);
+			let w = 0;
+			// place candles 
+			candles.forEach((p) => {
+				color("black");
+				char("d", p.pos);
+				w++;
+			});
+			color("yellow");
+			particle(G.WIDTH/2 - 8, G.HEIGHT/2 + 49, 3, 0.2, -10); //chara 1
+			// chara 3 die???
+			color("red");
+			particle(G.WIDTH/2 + 8, G.HEIGHT/2 + 49, 3, 0.2, -10); // chara 3
+			
 			color("black");
 			// Timer - 60 ticks --> 1 second
 			if(sec%60 == 0){
@@ -1167,22 +1211,63 @@ function update() {
 				}
 			}
 
-			// Pausing Stuff
-			if(pause == false){
-				sec++;
-			} else{
-				text("paused", G.WIDTH/2, 10);
-			}
 			break;
 
+
 		case "ending3":
-			color("black");
-			text("this is ending 3", G.WIDTH/2, 190);
+			// text("this is ending 2", G.WIDTH/2, 190);
+			let y = 0;
+			// place peeps
+			peeps.forEach((p) => {
+				color("red");
+				char(peepSprite[y], p.pos);
+				y++;
+			});
+			color("red");
+			particle(G.WIDTH/2 - 8, G.HEIGHT/2 + 49, 10, 2, -10); //chara 1
+			// die???
+			particle(G.WIDTH/2 + 8, G.HEIGHT/2 + 49, 15, 2, -10); // chara 3
+		
+			// Timer - 60 ticks --> 1 second
+			if(sec%60 == 0){
+				time++;
+			}
+			if(sec == 180){ // If change is x (60 * 10 seconds) amount of seconds, then switch text
+				count += 7;
+				sec = 0;
+			} else{ // Otherwise display the current text
+				if(count < 7){
+					// text(time.toString(), 4, 4);
+					text(ending3[count], 12, G.WIDTH/3 + 5);
+					text(ending3[count + 1], 12, G.WIDTH/3 + 13);
+					text(ending3[count + 2], 12, G.WIDTH/3 + 21);
+					text(ending3[count + 3], 12, G.WIDTH/3 + 29);
+					text(ending3[count + 4], 12, G.WIDTH/3 + 37);
+					text(ending3[count + 5], 12, G.WIDTH/3 + 45);
+					text(ending3[count + 6], 12, G.WIDTH/3 + 53);
+				} else {
+					color("black");
+					end();
+				}
+			}
+
 			end();
 			break;
 		
 		default: 
 		color("black");
+		let z = 0;
+			// place candles 
+			candles.forEach((p) => {
+				color("black");
+				char("d", p.pos);
+				z++;
+			});
+			color("yellow");
+			particle(G.WIDTH/2 - 8, G.HEIGHT/2 + 49, 3, 0.2, -10); // chara 1 candle
+			particle(G.WIDTH/2, G.HEIGHT/2 + 49, 3, 0.2, -10); // chara 2 candle
+			particle(G.WIDTH/2 + 8, G.HEIGHT/2 + 49, 3, 0.2, -10); // chara 3 candle
+
 		text("Not in the mood for stories, \n\nhuh? No matter, you'll be\n\nfound, one way or another.", 12, G.WIDTH/3 + 5);
 		end("");
 	}
