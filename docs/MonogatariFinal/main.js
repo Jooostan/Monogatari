@@ -130,7 +130,7 @@ function update() {
 
 		pause = false;
 
-		state = "ending3"; // HCNAGE LATER
+		state = "story"; // HCNAGE LATER
 
 		// Add character positions into peeps array
 		peeps[0] = {pos: vec(G.WIDTH/2 - 8, G.HEIGHT/2 + 50)};
@@ -531,6 +531,7 @@ function update() {
 			if(input.isJustPressed){
 				state = "story";
 			}
+			console.log(state);
 			break;
 		
 		// -NARRATION------------------------------------------
@@ -564,15 +565,10 @@ function update() {
 			}
 
 			if(input.isJustPressed){
-				state = ending1;
+				state = "ending1";
 			}
 
-			// Pausing Stuff
-			if(pause == false){
-				sec++;
-			} else{
-				text("paused", G.WIDTH/2, 10);
-			}
+			console.log(state);
 
 			break;
 		
@@ -622,15 +618,10 @@ function update() {
 
 			// Debugging Pausing
 			if(input.isJustPressed){
-				state = ending1;
+				state = "ending1";
 			}
 
-			// Pausing Stuff
-			if(pause == false){
-				sec++;
-			} else{
-				text("paused", G.WIDTH/2, 10);
-			}
+			console.log(state);
 
 			break;
 		
@@ -672,14 +663,7 @@ function update() {
 
 			// Debugging Pausing
 			if(input.isJustPressed){
-				state = "ending1";
-			}
-
-			// Pausing Stuff
-			if(pause == false){
-				sec++;
-			} else{
-				text("paused", G.WIDTH/2, 10);
+				state = ending1;
 			}
 
 			break;
@@ -705,6 +689,10 @@ function update() {
 			j++;
 			
 			});
+
+			if(input.isJustPressed){
+				state = "ending1";
+			}
 
 			break;
 	
@@ -753,15 +741,10 @@ function update() {
 
 			// Debugging Pausing
 			if(input.isJustPressed){
-				state = ending1;
+				state = "ending1";
 			}
 
-			// Pausing Stuff
-			if(pause == false){
-				sec++;
-			} else{
-				text("paused", G.WIDTH/2, 10);
-			}
+			console.log(state);
 			break;
 		
 		// -PEEP2WALKIN----------------------------------------
@@ -781,6 +764,7 @@ function update() {
 				}
 				l++;
 			});
+			console.log(state);
 			break;
 		
 		// -PEEP2AND3DIALOGUE---------------------------------
@@ -827,14 +811,10 @@ function update() {
 
 			// Debugging Pausing
 			if(input.isJustPressed){
+				state = "ending2"
 			}
 
-			// Pausing Stuff
-			if(pause == false){
-				sec++;
-			} else{
-				text("paused", G.WIDTH/2, 10);
-			}
+			console.log(state);
 			break;
 		
 		// -STORY2---------------------------------------------
@@ -874,9 +854,9 @@ function update() {
 
 			// Debugging Pausing
 			if(input.isJustPressed){
-				state = ending1;
+				state = "ending1";
 			}
-
+			console.log(state);
 			// Pausing Stuff
 			if(pause == false){
 				sec++;
@@ -920,18 +900,12 @@ function update() {
 					state = "peep3WalkOut";
 				}
 			}
-
+			console.log(state);
 			// Debugging Pausing
 			if(input.isJustPressed){
-				state = ending1;
+				state = "ending1";
 			}
 
-			// Pausing Stuff
-			if(pause == false){
-				sec++;
-			} else{
-				text("paused", G.WIDTH/2, 10);
-			}
 			break;
 		
 		// -PEEP3WALKOUT---------------------------------------
@@ -954,6 +928,7 @@ function update() {
 			if(waitin == 600){
 				state = "peep1and2Dialogue"
 			}
+			console.log(state);
 			break;
 
 		// -PEEP1AND2DIALOGUE---------------------------------
@@ -999,15 +974,9 @@ function update() {
 
 			// Debugging Pausing
 			if(input.isJustPressed){
-				state = ending2;
+				state = "ending2";
 			}
-
-			// Pausing Stuff
-			if(pause == false){
-				sec++;
-			} else{
-				text("paused", G.WIDTH/2, 10);
-			}
+			console.log(state);
 			break;
 
 		// -STORY3---------------------------------------------
@@ -1046,15 +1015,10 @@ function update() {
 
 			// Debugging Pausing
 			if(input.isJustPressed){
-				state = ending2;
+				state = "ending2";
 			}
 
-			// Pausing Stuff
-			if(pause == false){
-				sec++;
-			} else{
-				text("paused", G.WIDTH/2, 10);
-			}
+			console.log(state);
 
 			break;
 		
@@ -1094,15 +1058,9 @@ function update() {
 
 			// Debugging Pausing
 			if(input.isJustPressed){
-				state = ending2;
+				state = "ending2";
 			}
 
-			// Pausing Stuff
-			if(pause == false){
-				sec++;
-			} else{
-				text("paused", G.WIDTH/2, 10);
-			}
 			break;
 		
 		// -PEEP1WALKOUT---------------------------------------	
@@ -1128,8 +1086,6 @@ function update() {
 		// ----------------------------------------------------	
 		case "ending1":
 			// text("this is ending 1", G.WIDTH/2, 190);
-			
-
 			let v = 0;
 			// place candles 
 			candles.forEach((p) => {
@@ -1166,8 +1122,8 @@ function update() {
 				}
 			}
 
-			// Debugging Pausing
 			if(input.isJustPressed){
+				end("");
 			}
 
 			break;
@@ -1211,6 +1167,10 @@ function update() {
 				}
 			}
 
+			if(input.isJustPressed){
+				end("");
+			}
+
 			break;
 
 
@@ -1251,25 +1211,29 @@ function update() {
 				}
 			}
 
-			end();
+			if(input.isJustPressed){
+				end("");
+			}
+
 			break;
 		
 		default: 
-		color("black");
-		let z = 0;
-			// place candles 
-			candles.forEach((p) => {
-				color("black");
-				char("d", p.pos);
-				z++;
-			});
+			let z = 0;
+				// place candles 
+				candles.forEach((p) => {
+					color("black");
+					char("d", p.pos);
+					z++;
+				});
 			color("yellow");
 			particle(G.WIDTH/2 - 8, G.HEIGHT/2 + 49, 3, 0.2, -10); // chara 1 candle
 			particle(G.WIDTH/2, G.HEIGHT/2 + 49, 3, 0.2, -10); // chara 2 candle
-			particle(G.WIDTH/2 + 8, G.HEIGHT/2 + 49, 3, 0.2, -10); // chara 3 candle
+			particle(G.WIDTH/2 + 8, G.HEIGHT/2 + 49, 7, 0.2, -10); // chara 3 candle
 
-		text("Not in the mood for stories, \n\nhuh? No matter, you'll be\n\nfound, one way or another.", 12, G.WIDTH/3 + 5);
-		end("");
+			
+			color("black");
+			text("Not in the mood for stories, \n\nhuh? No matter, you'll be\n\nfound, one way or another.", 12, G.WIDTH/3 + 5);
+			end("");
 	}
 }
 // -END-OF-UPDATE-------------------------------------
