@@ -10,6 +10,15 @@ characters = [
 // G: light_green, B: light_blue, Y: light_yellow, P: light_purple, 
 // C: light_cyan
 `
+rrr  
+rYYYr 
+rBYBr 
+rBBB  
+rG G  
+ G y  
+`
+,
+`
   LLL 
   Lyy
   ryy
@@ -25,15 +34,7 @@ characters = [
   RRR
  pppRp
 `
-,
-`
- rrr  
-rYYYr 
-rBYBr 
-rBBB  
-rG G  
- G y
-`
+
 ];
 
 // -TYPE-STUFF-----------------------------------------
@@ -48,7 +49,7 @@ const G = {
 /**
  * @type { Color[] }
  */
-const peepColors = ["green", "blue", "cyan"];
+// const peepColors = ["green", "blue", "cyan"];
 
 /**
  * @typedef {{
@@ -65,6 +66,8 @@ let candles;
  * @type { Sprite[] }
  */
  let peeps = [];
+
+ let peepSprite = ["a", "b", "c"]
 // ----------------------------------------------------
 
 options = {
@@ -497,8 +500,8 @@ function update() {
 		case "start":
 			let index = 0;
 			peeps.forEach((p) => {
-				color(peepColors[index]);
-				char("a", p.pos);
+				// color(peepColors[index]);
+				char(peepSprite[index], p.pos);
 				index++;
 			});
 			if(input.isJustPressed){
@@ -554,8 +557,8 @@ function update() {
 			let dia = 0;
 			// text("dialogue", G.WIDTH/2, 190);
 			peeps.forEach((p) => {
-				color(peepColors[dia]);
-				char("a", p.pos);
+				// color(peepColors[dia]);
+				char(peepSprite[dia], p.pos);
 				dia++;
 			});	
 			color("black");
@@ -612,8 +615,8 @@ function update() {
 			let x = 0;
 			// text("story", G.WIDTH/2, 190);
 			peeps.forEach((p) => {
-				color(peepColors[x]);
-				char("a", p.pos);
+				// color(peepColors[x]);
+				char(peepSprite[x], p.pos);
 				x++;
 			});	
 			color("blue");
@@ -668,8 +671,8 @@ function update() {
 					p.pos.x += 0.5;
 				}
 
-				color(peepColors[j]);
-				char("a", p.pos);
+				// color(peepColors[j]);
+				char(peepSprite[j], p.pos);
 
 				if(j === 1 && p.pos.x > G.WIDTH + 6) {
 					state = "peep1and3Dialogue";
@@ -687,8 +690,8 @@ function update() {
 			let k = 0;
 			peeps.forEach((p) => {
 				if(k !== 1) {
-					color(peepColors[k]);
-					char("a", p.pos);
+					// color(peepColors[k]);
+					char(peepSprite[k], p.pos);
 				}
 				k++;
 			});
@@ -746,8 +749,8 @@ function update() {
 					p.pos.x -= 0.5;
 				}
 
-				color(peepColors[l]);
-				char("a", p.pos);
+				// color(peepColors[l]);
+				char(peepSprite[l], p.pos);
 
 				if(l === 1 && p.pos.x == (G.WIDTH/2)) {
 					state = "peep2and3Dialogue";
@@ -761,8 +764,8 @@ function update() {
 			// text("peep2and3Dialogue", G.WIDTH/2, 190);
 			let m = 0;
 			peeps.forEach((p) => {
-				color(peepColors[m]);
-				char("a", p.pos);
+				// color(peepColors[m]);
+				char(peepSprite[m], p.pos);
 				m++;
 			});
 
@@ -815,8 +818,8 @@ function update() {
 			let n = 0;
 			// text("story2", G.WIDTH/2, 190);
 			peeps.forEach((p) => {
-				color(peepColors[n]);
-				char("a", p.pos);
+				// color(peepColors[n]);
+				char(peepSprite[n], p.pos);
 				n++;
 			});	
 			color("cyan");
@@ -864,8 +867,8 @@ function update() {
 			// text("peep3Dialogue", G.WIDTH/2, 190);
 			let o = 0;
 			peeps.forEach((p) => {
-					color(peepColors[o]);
-					char("a", p.pos);
+					// color(peepColors[o]);
+					char(peepSprite[o], p.pos);
 				o++;
 			});
 			color("cyan");
@@ -916,8 +919,8 @@ function update() {
 					p.pos.x += 0.5;
 				}
 
-				color(peepColors[q]);
-				char("a", p.pos);
+				// color(peepColors[q]);
+				char(peepSprite[q], p.pos);
 
 				if(q === 2 && p.pos.x > G.WIDTH + 6) {
 					waitin++;
@@ -935,8 +938,8 @@ function update() {
 			let r = 0;
 			peeps.forEach((p) => {
 				if(r !== 2) {
-					color(peepColors[r]);
-					char("a", p.pos);
+					// color(peepColors[r]);
+					char(peepSprite[r], p.pos);
 				}
 				r++;
 			});
@@ -988,8 +991,8 @@ function update() {
 			let s = 0;
 			// text("story3", G.WIDTH/2, 190);
 			peeps.forEach((p) => {
-				color(peepColors[s]);
-				char("a", p.pos);
+				// color(peepColors[s]);
+				char(peepSprite[s], p.pos);
 				s++;
 			});	
 			color("green");
@@ -1037,8 +1040,8 @@ function update() {
 			let t = 0;
 			peeps.forEach((p) => {
 				if(t !== 2) {
-					color(peepColors[t]);
-					char("a", p.pos);
+					// color(peepColors[t]);
+					char(peepSprite[t], p.pos);
 				}
 				t++;
 			});
@@ -1087,8 +1090,8 @@ function update() {
 					p.pos.x += 0.5;
 				}
 
-				color(peepColors[u]);
-				char("a", p.pos);
+				// color(peepColors[u]);
+				char(peepSprite[u], p.pos);
 
 				if(u === 0 && p.pos.x > G.WIDTH + 6) {
 					state = "ending3";
