@@ -1,4 +1,4 @@
-title = "Hyakumonogatari Kaidankai";
+title = "Monogatari";
 
 description = `
 [Tap] to end story
@@ -70,7 +70,7 @@ let candles;
 options = {
 	viewSize: {x: G.WIDTH, y: G.HEIGHT},
 	isShowingScore: false,
-	theme: "dark",
+	theme: "crt",
 	seed: 71
 };
 
@@ -118,7 +118,7 @@ function update() {
 
 		pause = false;
 
-		state = "narration"; // HCNAGE LATER
+		state = "story"; // HCNAGE LATER
 
 		// Add character positions into peeps array
 		peeps[0] = {pos: vec(G.WIDTH/2 - 8, G.HEIGHT/2 + 50)};
@@ -129,7 +129,7 @@ function update() {
 		narration = [];
 
 		// 0
-		narration[0] = "There`s a game your supposed";
+		narration[0] = "There`s a game you're supposed";
 		narration[1] = "to play in the dead of night.";
 		narration[2] = "You light one hundred candles";
 		narration[3] = "and leave them in a room. You";
@@ -159,7 +159,7 @@ function update() {
 		dialogue = [];
 
 		// Green
-		dialogue[0] = "...So who’s up to tell the next";
+		dialogue[0] = "...So who's up to tell the next";
 		dialogue[1] = "story?";
 		dialogue[2] = "";
 		dialogue[3] = "";
@@ -179,7 +179,7 @@ function update() {
 		// Cyan
 		dialogue[14] = "We should just skip your turn";
 		dialogue[15] = "and have me go. Your stories";
-		dialogue[16] = "aren’t scary at all.";
+		dialogue[16] = "aren't scary at all.";
 		dialogue[17] = "";
 		dialogue[18] = ""
 		dialogue[19] = "";
@@ -187,7 +187,7 @@ function update() {
 
 		// Blue
 		dialogue[21] = "Oh, and I suppose that nonsense";
-		dialogue[22] = "you read online is the hight";
+		dialogue[22] = "you read online is the height";
 		dialogue[23] = "of horror.";
 		dialogue[24] = "";
 		dialogue[25] = "";
@@ -223,31 +223,31 @@ function update() {
 
 		story[14] = "How their faces were filled";
 		story[15] = "with joy and candy and laughs";
-		story[16] = "and screams.But those Humbugs";
+		story[16] = "and screams. But those Humbugs";
 		story[17] = "had to come from somewhere.";
 		story[18] = "Somewhere with many ingredients."
 		story[19] = "It was the day before All";
 		story[20] = "Hallow`s Eve.";
 
 		story[21] = "A new batch was bought to be";
-		story[22] = "sold to the kids.Money from";
+		story[22] = "sold to the kids. Money from";
 		story[23] = "small hands in exchange for the";
-		story[24] = "man`s confections.Halloween,";
+		story[24] = "man`s confections. Halloween,";
 		story[25] = "afterall, is the perfect time";
-		story[26] = "for humbugs.Then the sickness";
+		story[26] = "for humbugs. Then the sickness";
 		story[27] = "came.";
 
 		story[28] = "First one, then ten, then 100,";
-		story[29] = "until more 200 fell ill.";
+		story[29] = "until more than 200 fell ill.";
 		story[30] = "Everyone loved Billy`s sweets.";
-		story[31] = "Everyone ate Billy`s sweets";
+		story[31] = "Everyone ate Billy`s sweets.";
 		story[32] = "But Billy didn`t make his";
 		story[33] = "sweets.";
 		story[34] = "";
 
 		story[35] = "If he did, he would have seen";
 		story[36] = "how arsenic had been mistaken";
-		story[37] = "for filler daff.Five pounds of";
+		story[37] = "for filler daff. Five pounds of";
 		story[38] = "poisoned candy were given that";
 		story[39] = "day. 21 were dead.";
 		story[40] = "";
@@ -255,7 +255,7 @@ function update() {
 
 
 		story[42] = "Humbug Billy now lives on as"
-		story[43] = "a legend.The one that tells";
+		story[43] = "a legend. The one that tells";
 		story[44] = "you to always check your candy"
 		story[45] = "on Halloween.";
 		story[46] = "";
@@ -367,7 +367,7 @@ function update() {
 		peep1and2[3] = "";
 		peep1and2[4] = "";
 		peep1and2[5] = "";
-		peep1and2[6] = ""
+		peep1and2[6] = "";
 
 		peep1and2[7] = "Do you think they need help";
 		peep1and2[8] = "with something?";
@@ -400,7 +400,7 @@ function update() {
 		story3[3] = "anyone here.";
 		story3[4] = "";
 		story3[5] = "";
-		story3[6] = ""
+		story3[6] = "";
 
 		story3[7] = "They`ve been here longer than";
 		story3[8] = "people.";
@@ -451,6 +451,7 @@ function update() {
 		story3[48] = "";
 
 		// -SNUFF----------------------------------------------
+		snuff = [];
 		snuff[0] = "They`re still not back...";
 		snuff[1] = "";
 		snuff[2] = "";
@@ -471,69 +472,22 @@ function update() {
 		ending1 = [];
 		ending1[0] = "Couldn't handle any more";
 		ending1[1] = "stories?";
-		ending1[2] = "";
-		ending1[3] = "";
-		ending1[4] = "";
-		ending1[5] = "";
+		ending1[2] = "There’s still candles left...";
+		ending1[3] = "But it`s alright. You can leave ";
+		ending1[4] = "knowing you never finished ";
+		ending1[5] = "the game.";
 		ending1[6] = ""
 
-		ending1[7] = "There’s still 2 candles left...";
-		ending1[8] = "";
-		ending1[9] = "";
-		ending1[10] = "";
-		ending1[11] = "";
-		ending1[12] = "";
-		ending1[13] = "";
-
-		ending1[14] = "But it`s alright.You can leave";
-		ending1[15] = "knowing.";
-		ending1[16] = "";
-		ending1[17] = "";
-		ending1[18] = "";
-		ending1[19] = "";
-		ending1[20] = "";
-
-		ending1[21] = "You never finished the game.";
-		ending1[22] = "";
-		ending1[23] = "";
-		ending1[24] = "";
-		ending1[25] = "";
-		ending1[26] = "";
-		ending1[27] = "";
 
 		// -ENDING-2-------------------------------------------
 		ending2 = [];
 		ending2[0] = "2 candles left, and 1";
 		ending2[1] = "player down.";
-		ending2[2] = "";
-		ending2[3] = "";
-		ending2[4] = "";
-		ending2[5] = "";
-		ending2[6] = ""
-
-		ending2[7] = "Was it a trick or have";
-		ending2[8] = "they.";
-		ending2[9] = "";
-		ending2[10] = "";
-		ending2[11] = "";
-		ending2[12] = "";
-		ending2[13] = "";
-
-		ending2[14] = "Become an unknown";
-		ending2[15] = "entity`s treat?";
-		ending2[16] = "";
-		ending2[17] = "";
-		ending2[18] = "";
-		ending2[19] = "";
-		ending2[20] = "";
-
-		ending2[21] = "Suppose you’ll never";
-		ending2[22] = "find out...";
-		ending2[23] = "";
-		ending2[24] = "";
-		ending2[25] = "";
-		ending2[26] = "";
-		ending2[27] = "";
+		ending2[2] = "Was it a trick or have";
+		ending2[3] = "they become an unknown";
+		ending2[4] = "entity's treat?";
+		ending2[5] = "Suppose you'll never";
+		ending2[6] = "find out..."
 
 	}
 	// -END-OF-INIT-----------------------------------
@@ -574,9 +528,9 @@ function update() {
 					text(narration[count + 4], 12, G.WIDTH/3 + 37);
 					text(narration[count + 5], 12, G.WIDTH/3 + 45);
 					text(narration[count + 6], 12, G.WIDTH/3 + 53);
-					console.log("count: " + count)
+					// console.log("count: " + count)
 				} else {
-					console.log("count: " + count)
+					// console.log("count: " + count)
 					count = 0; // CHANGE LATER
 					state = "dialogue";
 				}
@@ -1146,7 +1100,7 @@ function update() {
 
 		// ----------------------------------------------------	
 		case "ending1":
-			text("this is ending 1", G.WIDTH/2, 190);
+			// text("this is ending 1", G.WIDTH/2, 190);
 			color("black");
 			// Timer - 60 ticks --> 1 second
 			if(sec%60 == 0){
@@ -1157,7 +1111,7 @@ function update() {
 				count += 7;
 				sec = 0;
 			} else{ // Otherwise display the current text
-				if(count < 22){
+				if(count < 7){
 					// text(time.toString(), 4, 4);
 					text(ending1[count], 12, G.WIDTH/3 + 5);
 					text(ending1[count + 1], 12, G.WIDTH/3 + 13);
@@ -1185,25 +1139,25 @@ function update() {
 			break;
 		
 		case "ending2":
-			text("this is ending 2", G.WIDTH/2, 190);
+			// text("this is ending 2", G.WIDTH/2, 190);
 			color("black");
 			// Timer - 60 ticks --> 1 second
 			if(sec%60 == 0){
 				time++;
 			}
-			if(sec == 180){ // If change is x (60 * 10 seconds) amount of seconds, then switch text
+			if(sec == 300){ // If change is x (60 * 10 seconds) amount of seconds, then switch text
 				count += 7;
 				sec = 0;
 			} else{ // Otherwise display the current text
-				if(count < 22){
+				if(count < 7){
 					// text(time.toString(), 4, 4);
-					text(ending1[count], 12, G.WIDTH/3 + 5);
-					text(ending1[count + 1], 12, G.WIDTH/3 + 13);
-					text(ending1[count + 2], 12, G.WIDTH/3 + 21);
-					text(ending1[count + 3], 12, G.WIDTH/3 + 29);
-					text(ending1[count + 4], 12, G.WIDTH/3 + 37);
-					text(ending1[count + 5], 12, G.WIDTH/3 + 45);
-					text(ending1[count + 6], 12, G.WIDTH/3 + 53);
+					text(ending2[count], 12, G.WIDTH/3 + 5);
+					text(ending2[count + 1], 12, G.WIDTH/3 + 13);
+					text(ending2[count + 2], 12, G.WIDTH/3 + 21);
+					text(ending2[count + 3], 12, G.WIDTH/3 + 29);
+					text(ending2[count + 4], 12, G.WIDTH/3 + 37);
+					text(ending2[count + 5], 12, G.WIDTH/3 + 45);
+					text(ending2[count + 6], 12, G.WIDTH/3 + 53);
 				} else {
 					color("black");
 					end();
@@ -1219,13 +1173,17 @@ function update() {
 			break;
 
 		case "ending3":
+			color("black");
 			text("this is ending 3", G.WIDTH/2, 190);
+			end();
 			break;
 		
 		default: 
-		text("End of game states :)", 12, G.WIDTH/3 + 5);
+		color("black");
+		text("Not in the mood for stories, \n\nhuh? No matter, you'll be\n\nfound, one way or another.", 12, G.WIDTH/3 + 5);
+		end("");
 	}
 }
 // -END-OF-UPDATE-------------------------------------
 
-//http://localhost:4000/?SpriteAnimation
+//http://localhost:4000/?MonogatariFinal
