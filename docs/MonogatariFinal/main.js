@@ -91,7 +91,10 @@ options = {
 	viewSize: {x: G.WIDTH, y: G.HEIGHT},
 	isShowingScore: false,
 	theme: "crt",
-	seed: 71
+	seed: 71,
+	isCapturing: true,
+	isCapturingGameCanvasOnly: true,
+	captureCanvasScale: 0.3,
 };
 
 let state; // keeps track of current game state
