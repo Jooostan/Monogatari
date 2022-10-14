@@ -42,6 +42,15 @@ rG G
   LL  
   LL  
 `
+,
+`
+      
+      
+ lll  
+ lll  
+    l 
+	  
+`
 
 ];
 
@@ -130,7 +139,7 @@ function update() {
 
 		pause = false;
 
-		state = "story"; // HCNAGE LATER
+		state = "narration"; // HCNAGE LATER
 
 		// Add character positions into peeps array
 		peeps[0] = {pos: vec(G.WIDTH/2 - 8, G.HEIGHT/2 + 50)};
@@ -531,7 +540,7 @@ function update() {
 			if(input.isJustPressed){
 				state = "story";
 			}
-			console.log(state);
+			
 			break;
 		
 		// -NARRATION------------------------------------------
@@ -543,7 +552,7 @@ function update() {
 				time++;
 			}
 			// CHANGE BACK LATER
-			if(sec == 600){ // If change is x (60 * 10 seconds) amount of seconds, then switch text
+			if(sec == 360){ // If change is x (60 * 10 seconds) amount of seconds, then switch text
 				count += 7;
 				sec = 0;
 			} else{ // Otherwise display the current text
@@ -565,10 +574,11 @@ function update() {
 			}
 
 			if(input.isJustPressed){
-				state = "ending1";
+				state = "goToDefault";
 			}
 
-			console.log(state);
+			// run story
+			sec++;
 
 			break;
 		
@@ -594,11 +604,16 @@ function update() {
 				if(count < 29){
 					if(count == 0 || count == 28){
 						color("green");
+						char("e", G.WIDTH/2 - 8, G.HEIGHT/2 + 43);
 					}
 					else if(count == 7 || count == 21){
-						color("blue")
+						color("blue");
+						char("e", G.WIDTH/2, G.HEIGHT/2 + 43);
+						
 					} else{
 						color("cyan");
+						char("e", G.WIDTH/2 + 8, G.HEIGHT/2 + 43);
+						
 					}
 					// text(time.toString(), 4, 4);
 					text(dialogue[count], 12, G.WIDTH/3 + 5);
@@ -620,8 +635,9 @@ function update() {
 			if(input.isJustPressed){
 				state = "ending1";
 			}
-
-			console.log(state);
+			
+			// run story
+			sec++;
 
 			break;
 		
@@ -635,6 +651,8 @@ function update() {
 				x++;
 			});	
 			color("blue");
+			char("e", G.WIDTH/2, G.HEIGHT/2 + 43);
+
 			// Timer - 60 ticks --> 1 second
 			if(sec%60 == 0){
 				time++;
@@ -663,8 +681,11 @@ function update() {
 
 			// Debugging Pausing
 			if(input.isJustPressed){
-				state = ending1;
+				state = "goToDefault";
 			}
+
+			// run story
+			sec++;
 
 			break;
 
@@ -694,6 +715,7 @@ function update() {
 				state = "ending1";
 			}
 
+
 			break;
 	
 		// -PEEP1AND3DIALOGUE---------------------------------
@@ -721,10 +743,14 @@ function update() {
 				if(count < 8){
 					if(count == 0){
 						color("cyan");
+						char("e", G.WIDTH/2 + 8, G.HEIGHT/2 + 43);
+						
 					} else{
 						color("green");
+						char("e", G.WIDTH/2 - 8, G.HEIGHT/2 + 43);
+						
 					}
-					text(time.toString(), 4, 4);
+					// text(time.toString(), 4, 4);
 					text(peep1and3[count], 12, G.WIDTH/3 + 5);
 					text(peep1and3[count + 1], 12, G.WIDTH/3 + 13);
 					text(peep1and3[count + 2], 12, G.WIDTH/3 + 21);
@@ -744,7 +770,9 @@ function update() {
 				state = "ending1";
 			}
 
-			console.log(state);
+			// run story
+			sec++;
+
 			break;
 		
 		// -PEEP2WALKIN----------------------------------------
@@ -764,7 +792,8 @@ function update() {
 				}
 				l++;
 			});
-			console.log(state);
+
+
 			break;
 		
 		// -PEEP2AND3DIALOGUE---------------------------------
@@ -791,9 +820,12 @@ function update() {
 				if(count < 8){
 					if(count == 0){
 						color("blue");
+						char("e", G.WIDTH/2, G.HEIGHT/2 + 43);
 					} else{
 						color("cyan");
+						char("e", G.WIDTH/2 + 8, G.HEIGHT/2 + 43);
 					}
+
 					// text(time.toString(), 4, 4);
 					text(peep2and3[count], 12, G.WIDTH/3 + 5);
 					text(peep2and3[count + 1], 12, G.WIDTH/3 + 13);
@@ -814,7 +846,9 @@ function update() {
 				state = "ending2"
 			}
 
-			console.log(state);
+			// run story
+			sec++;
+
 			break;
 		
 		// -STORY2---------------------------------------------
@@ -827,6 +861,8 @@ function update() {
 				n++;
 			});	
 			color("cyan");
+			char("e", G.WIDTH/2 + 8, G.HEIGHT/2 + 43);
+
 			// Timer - 60 ticks --> 1 second
 			if(sec%60 == 0){
 				time++;
@@ -856,13 +892,9 @@ function update() {
 			if(input.isJustPressed){
 				state = "ending1";
 			}
-			console.log(state);
-			// Pausing Stuff
-			if(pause == false){
-				sec++;
-			} else{
-				text("paused", G.WIDTH/2, 10);
-			}
+
+			// run story
+			sec++; 
 
 			break;
 		
@@ -876,6 +908,8 @@ function update() {
 				o++;
 			});
 			color("cyan");
+			char("e", G.WIDTH/2 + 8, G.HEIGHT/2 + 43);
+
 			// Timer - 60 ticks --> 1 second
 			if(sec%60 == 0){
 				time++;
@@ -900,11 +934,14 @@ function update() {
 					state = "peep3WalkOut";
 				}
 			}
-			console.log(state);
+			
 			// Debugging Pausing
 			if(input.isJustPressed){
 				state = "ending1";
 			}
+
+			// run story
+			sec++;
 
 			break;
 		
@@ -928,7 +965,8 @@ function update() {
 			if(waitin == 600){
 				state = "peep1and2Dialogue"
 			}
-			console.log(state);
+			
+
 			break;
 
 		// -PEEP1AND2DIALOGUE---------------------------------
@@ -954,10 +992,12 @@ function update() {
 				if(count < 22){
 					if(count == 0 || count == 14){
 						color("blue");
+						char("e", G.WIDTH/2, G.HEIGHT/2 + 43);
 					} else{
 						color("green");
+						char("e", G.WIDTH/2 - 8, G.HEIGHT/2 + 43);
 					}
-					text(time.toString(), 4, 4);
+					// text(time.toString(), 4, 4);
 					text(peep1and2[count], 12, G.WIDTH/3 + 5);
 					text(peep1and2[count + 1], 12, G.WIDTH/3 + 13);
 					text(peep1and2[count + 2], 12, G.WIDTH/3 + 21);
@@ -976,7 +1016,10 @@ function update() {
 			if(input.isJustPressed){
 				state = "ending2";
 			}
-			console.log(state);
+			
+			// run story
+			sec++;
+			
 			break;
 
 		// -STORY3---------------------------------------------
@@ -989,6 +1032,8 @@ function update() {
 				s++;
 			});	
 			color("green");
+			char("e", G.WIDTH/2 - 8, G.HEIGHT/2 + 43);
+			
 			// Timer - 60 ticks --> 1 second
 			if(sec%60 == 0){
 				time++;
@@ -1018,7 +1063,8 @@ function update() {
 				state = "ending2";
 			}
 
-			console.log(state);
+			// run story
+			sec++;
 
 			break;
 		
@@ -1041,7 +1087,14 @@ function update() {
 				count += 7;
 				sec = 0;
 			} else{ // Otherwise display the current text
-				if(count < 22){
+				if(count < 8){
+					if(count == 0 ){
+						color("green");
+						char("e", G.WIDTH/2 - 8, G.HEIGHT/2 + 43);
+					} else{
+						color("blue");
+						char("e", G.WIDTH/2, G.HEIGHT/2 + 43);
+					}
 					// text(time.toString(), 4, 4);
 					text(snuff[count], 12, G.WIDTH/3 + 5);
 					text(snuff[count + 1], 12, G.WIDTH/3 + 13);
@@ -1061,6 +1114,9 @@ function update() {
 				state = "ending2";
 			}
 
+			// run story
+			sec++;
+
 			break;
 		
 		// -PEEP1WALKOUT---------------------------------------	
@@ -1071,15 +1127,17 @@ function update() {
 				if(u === 0) {
 					p.pos.x += 0.5;
 				}
-
-				color("black");
-				char(peepSprite[u], p.pos);
-
+				if(u !== 2) {
+					color("black");
+					char(peepSprite[u], p.pos);
+				}
 				if(u === 0 && p.pos.x > G.WIDTH + 6) {
+					count = 0;
 					state = "ending3";
 				}
 				u++;
 			});
+
 
 			break;
 
@@ -1122,9 +1180,8 @@ function update() {
 				}
 			}
 
-			if(input.isJustPressed){
-				end("");
-			}
+			// run story
+			sec++;
 
 			break;
 		
@@ -1167,9 +1224,8 @@ function update() {
 				}
 			}
 
-			if(input.isJustPressed){
-				end("");
-			}
+			// run story
+			sec++;
 
 			break;
 
@@ -1180,7 +1236,11 @@ function update() {
 			// place peeps
 			peeps.forEach((p) => {
 				color("red");
-				char(peepSprite[y], p.pos);
+				if(y === 0){
+					char(peepSprite[y], G.WIDTH/2 - 8, p.pos.y);
+				} else{
+					char(peepSprite[y], p.pos);
+				}
 				y++;
 			});
 			color("red");
@@ -1211,9 +1271,8 @@ function update() {
 				}
 			}
 
-			if(input.isJustPressed){
-				end("");
-			}
+			// run story
+			sec++;
 
 			break;
 		
@@ -1229,7 +1288,7 @@ function update() {
 			particle(G.WIDTH/2 - 8, G.HEIGHT/2 + 49, 3, 0.2, -10); // chara 1 candle
 			particle(G.WIDTH/2, G.HEIGHT/2 + 49, 3, 0.2, -10); // chara 2 candle
 			particle(G.WIDTH/2 + 8, G.HEIGHT/2 + 49, 7, 0.2, -10); // chara 3 candle
-
+			console.log("particles");
 			
 			color("black");
 			text("Not in the mood for stories, \n\nhuh? No matter, you'll be\n\nfound, one way or another.", 12, G.WIDTH/3 + 5);
